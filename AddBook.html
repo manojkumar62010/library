@@ -1,0 +1,93 @@
+<!-- . Add Book Form with Validation -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Book</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    .form-container {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      margin-top: 100px;
+      border-radius: 10px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>Add Book</h2>
+    <select id="mediaType">
+      <option value="book">Book</option>
+      <option value="movie">Movie</option>
+    </select>
+    <input type="text" id="title" placeholder="Title" required>
+    <input type="text" id="author" placeholder="Author" required>
+    <input type="text" id="isbn" placeholder="ISBN Number" required>
+    <input type="text" id="publisher" placeholder="Publisher" required>
+    <button onclick="addBook()">Add Book</button>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    function addBook() {
+      const mediaType = document.getElementById('mediaType').value;
+      const title = document.getElementById('title').value;
+      const author = document.getElementById('author').value;
+      const isbn = document.getElementById('isbn').value;
+      const publisher = document.getElementById('publisher').value;
+      const error = document.getElementById('error');
+
+      if (!title || !author || !isbn || !publisher) {
+        error.textContent = "All fields are mandatory.";
+        return;
+      }
+
+      error.textContent = "";
+      alert(`${mediaType.charAt(0).toUpperCase() + mediaType.slice(1)} added successfully!`);
+      // Redirect to the book list or dashboard page
+      window.location.href = "./Booklist.html";
+    }
+  </script>
+</body>
+
+</html>
